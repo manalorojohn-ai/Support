@@ -675,7 +675,7 @@
         <div id="page-1" class="page-section active fade-in-init" style="position:relative;">
             <div class="hero-glow"></div>
 
-            <div class="hero-badge">🌸 for you, today</div>
+            <div class="hero-badge">🌸 for you</div>
 
             <h1 class="page-title">
                 Alam kong importante<br>
@@ -715,13 +715,29 @@
         <!-- ── PAGE 3 ──────────────────────────────────────── -->
         <div id="page-3" class="page-section">
             <h2 class="section-title" style="margin-bottom:0.4rem;">Kaya mo 'to. 💗</h2>
-            <p class="section-hint">Para sa'yo lang ito.</p>
+            <p class="section-hint">Huling pahinga bago bumalik.</p>
 
-            <div class="cta-wrapper">
-                <button class="btn btn-cta" onclick="popHearts(event)" id="btn-hearts">
-                    💖 Goodluck po, kaya po natin 'to! 💖
-                </button>
-                <p class="cta-desc">I-click mo lang 'yan, para sa'yo 'yan 🌸</p>
+            <div class="cta-wrapper" style="gap: 2rem;">
+                <div style="width: 100%;">
+                    <button class="btn btn-cta" onclick="popHearts(event)" id="btn-hearts">
+                        Next
+                    </button>
+                </div>
+
+                <!-- Release your worry feature -->
+                <div
+                    style="width: 100%; display: flex; flex-direction: column; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(220,160,195,0.2);">
+                    <p style="font-size: 0.85rem; color: var(--text-mid); font-style: italic;">Released a worry today?
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="worry-input" placeholder="Type a worry here..."
+                            style="flex: 1; background: rgba(255,255,255,0.3); border: 1px solid rgba(220,160,195,0.3); padding: 0.8rem 1.2rem; border-radius: 999px; font-family: inherit; font-size: 0.85rem; color: var(--text-dark); outline: none;">
+                        <button onclick="releaseWorry()"
+                            style="background: var(--petal); color: var(--text-dark); border: none; padding: 0.8rem 1.2rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                            Let go
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <button class="btn btn-ghost" onclick="goToPage(2)" id="btn-back-3">← Back to Cards</button>
@@ -871,6 +887,44 @@
                 setTimeout(() => sparkle.remove(), 800);
             }
         });
+
+        /* ── Release Worry Feature ────────────────────────── */
+        function releaseWorry() {
+            const input = document.getElementById('worry-input');
+            const worry = input.value.trim();
+            if (!worry) return;
+
+            // Create floating bubble for the worry
+            const bubble = document.createElement('div');
+            bubble.textContent = worry;
+            bubble.style.position = 'fixed';
+            bubble.style.left = '50%';
+            bubble.style.bottom = '40%';
+            bubble.style.transform = 'translateX(-50%)';
+            bubble.style.background = 'rgba(255, 255, 255, 0.6)';
+            bubble.style.padding = '1rem 2rem';
+            bubble.style.borderRadius = '999px';
+            bubble.style.backdropFilter = 'blur(10px)';
+            bubble.style.boxShadow = '0 10px 30px rgba(0,0,0,0.05)';
+            bubble.style.color = 'var(--text-mid)';
+            bubble.style.fontSize = '0.9rem';
+            bubble.style.pointerEvents = 'none';
+            bubble.style.zIndex = '10000';
+            bubble.style.opacity = '1';
+            bubble.style.transition = 'all 4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+
+            document.body.appendChild(bubble);
+            input.value = '';
+
+            // Animate it floating away and fading
+            requestAnimationFrame(() => {
+                bubble.style.bottom = '120%';
+                bubble.style.opacity = '0';
+                bubble.style.transform = 'translateX(-50%) scale(1.5) rotate(15deg)';
+            });
+
+            setTimeout(() => bubble.remove(), 4000);
+        }
     </script>
 </body>
 
