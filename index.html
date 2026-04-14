@@ -4,119 +4,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cute Capybara GIF Support</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>A Little Space For You 🌸</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
-        :root {
-            --pink-soft: #ffe4e6;
-            --pink-medium: #fbcfe8;
-            --rose-text: #5a3d46;
-            --rose-accent: #7a4f5c;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--pink-soft) 0%, var(--pink-medium) 100%);
-            background-attachment: fixed;
-            color: var(--rose-text);
-            overflow-x: hidden;
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Restoration of Aesthetic Elements */
+        :root {
+            --blush: #fce8ee;
+            --petal: #f9d0dc;
+            --rose-mist: #f4b8cc;
+            --dusty-rose: #e8a0b4;
+            --mauve: #c97fa0;
+            --deep-rose: #9d5875;
+            --text-dark: #5c3150;
+            --text-mid: #7a4a65;
+            --text-light: #b080a0;
+            --white-glass: rgba(255, 255, 255, 0.55);
+            --white-glass-hover: rgba(255, 255, 255, 0.78);
+            --shadow-sm: 0 4px 20px rgba(200, 100, 140, 0.10);
+            --shadow-md: 0 12px 40px rgba(200, 100, 140, 0.16);
+            --shadow-lg: 0 24px 60px rgba(200, 100, 140, 0.20);
+        }
+
+        /* ── GRAIN TEXTURE ────────────────────────────────── */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(160deg,
+                    #fdeef4 0%,
+                    #fce4ef 25%,
+                    #f8d6e8 50%,
+                    #f3cae0 75%,
+                    #eedaec 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3.5rem 1.5rem 8rem;
+        }
+
+        /* ── AMBIENT BLOBS ────────────────────────────────── */
         .blob {
             position: fixed;
-            width: 450px;
-            height: 450px;
-            background: rgba(255, 255, 255, 0.45);
             border-radius: 50%;
-            filter: blur(90px);
-            z-index: -1;
-            animation: float-blob 28s infinite alternate ease-in-out;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .blob-1 {
-            top: -100px;
-            left: -100px;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle, rgba(255, 210, 225, 0.6), rgba(255, 180, 210, 0.2));
+            top: -160px;
+            left: -160px;
+            animation: drift 22s infinite alternate ease-in-out;
         }
 
         .blob-2 {
-            bottom: -100px;
-            right: -100px;
-            animation-delay: -5s;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(240, 195, 220, 0.55), rgba(220, 160, 200, 0.15));
+            bottom: -140px;
+            right: -140px;
+            animation: drift 28s infinite alternate-reverse ease-in-out;
         }
 
         .blob-3 {
-            top: 35%;
-            left: 55%;
-            width: 350px;
-            height: 350px;
-            animation-delay: -10s;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(255, 225, 235, 0.5), rgba(235, 185, 215, 0.1));
+            top: 42%;
+            left: 52%;
+            animation: drift 18s infinite alternate ease-in-out;
+            animation-delay: -8s;
         }
 
-        @keyframes float-blob {
+        .blob-4 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(255, 200, 220, 0.45), transparent);
+            top: 20%;
+            right: 8%;
+            animation: drift 24s infinite alternate ease-in-out;
+            animation-delay: -14s;
+        }
+
+        @keyframes drift {
             0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
+                transform: translate(0, 0) scale(1);
             }
 
             100% {
-                transform: translate(70px, 90px) scale(1.3) rotate(30deg);
+                transform: translate(55px, 70px) scale(1.18);
             }
         }
 
-        .fade-in {
-            animation: fadeIn 2s forwards;
+        /* ── SAKURA PETALS ────────────────────────────────── */
+        .petal-fall {
+            position: fixed;
+            top: -60px;
+            font-size: 1.1rem;
             opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall-petal linear infinite;
         }
 
-        @keyframes fadeIn {
-            from {
+        @keyframes fall-petal {
+            0% {
+                transform: translateY(0) rotate(0deg) translateX(0);
                 opacity: 0;
-                transform: translateY(40px);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg) translateX(60px);
+                opacity: 0;
             }
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 10px 35px rgba(251, 207, 232, 0.25);
+        /* ── LAYOUT ───────────────────────────────────────── */
+        .container {
+            max-width: 680px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 78vh;
+            justify-content: center;
         }
 
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.7);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(244, 114, 182, 0.15);
-        }
-
-        .message-reveal {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--rose-accent);
-        }
-
-        .message-reveal.active {
-            max-height: 300px;
-            opacity: 1;
-            margin-top: 1.25rem;
-        }
-
+        /* ── PAGE TRANSITIONS ─────────────────────────────── */
         .page-section {
             display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .page-section.active {
@@ -125,77 +189,301 @@
             transform: translateY(0);
         }
 
-        /* Capybara Restoration */
-        .capybara {
-            position: fixed;
-            bottom: 40px;
-            width: 150px;
-            z-index: 10;
-            pointer-events: none;
-            animation: float-capy 6s infinite ease-in-out;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
+        .page-section.fade-in-init {
+            animation: pageEntrance 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        .capy-left {
-            left: 40px;
-            transform: scaleX(-1);
-        }
-
-        .capy-right {
-            right: 40px;
-        }
-
-        @keyframes float-capy {
-
-            0%,
-            100% {
-                transform: translateY(0) scaleX(-1);
+        @keyframes pageEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(36px);
             }
 
-            50% {
-                transform: translateY(-20px) scaleX(-1);
-            }
-        }
-
-        .capy-right {
-            animation-name: float-capy-right;
-            transform: none;
-        }
-
-        @keyframes float-capy-right {
-
-            0%,
-            100% {
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* ── GLASS CARD ───────────────────────────────────── */
+        .glass {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 2.5rem;
+            box-shadow:
+                var(--shadow-md),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.6s ease,
+                background 0.5s ease;
+        }
+
+        .glass:hover {
+            transform: translateY(-9px) scale(1.01);
+            background: rgba(255, 255, 255, 0.55);
+            box-shadow:
+                var(--shadow-lg),
+                inset 0 1px 2px rgba(255, 255, 255, 1),
+                0 15px 30px rgba(232, 160, 180, 0.15);
+        }
+
+        /* ── TYPOGRAPHY ───────────────────────────────────── */
+        .page-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 2.9rem);
+            line-height: 1.25;
+            color: var(--text-dark);
+            margin-bottom: 1.1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .page-title em {
+            font-style: italic;
+            color: var(--mauve);
+        }
+
+        .page-subtitle {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-mid);
+            line-height: 1.7;
+            max-width: 420px;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.65rem;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .section-hint {
+            font-size: 0.87rem;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-bottom: 2.2rem;
+        }
+
+        /* ── DECORATIVE DIVIDER ───────────────────────────── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 1.8rem 0 2.2rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(188, 120, 160, 0.35), transparent);
+        }
+
+        .divider span {
+            font-size: 1rem;
+            color: var(--dusty-rose);
+            animation: pulse-icon 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse-icon {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
 
             50% {
-                transform: translateY(-20px);
+                transform: scale(1.2);
             }
         }
 
-        @media (max-width: 768px) {
-            .capybara {
-                width: 100px;
-                bottom: 15px;
-            }
+        /* ── BUTTONS ──────────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 999px;
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.01em;
+        }
 
-            .capy-left {
-                left: 10px;
-            }
+        .btn:active {
+            transform: scale(0.94);
+        }
 
-            .capy-right {
-                right: 10px;
+        .btn-primary {
+            background: linear-gradient(135deg, #e8a4be 0%, #d685a8 100%);
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(200, 110, 155, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #dc90ae 0%, #c8709a 100%);
+            box-shadow: 0 10px 30px rgba(200, 110, 155, 0.45);
+            transform: translateY(-3px);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.45);
+            border: 1.5px solid rgba(220, 150, 180, 0.4);
+            color: var(--text-mid);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(200, 120, 160, 0.55);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, #e08ab0 0%, #c96898 60%, #b8579a 100%);
+            color: #fff;
+            font-size: 1.05rem;
+            padding: 1.1rem 2.6rem;
+            box-shadow: 0 8px 28px rgba(185, 90, 150, 0.38);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-cta:hover {
+            background: linear-gradient(135deg, #d87aa5 0%, #bf5a90 60%, #a84a8c 100%);
+            box-shadow: 0 14px 38px rgba(185, 90, 150, 0.50);
+            transform: translateY(-4px);
+        }
+
+        .btn-nav-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ── SUPPORT CARDS GRID ───────────────────────────── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.1rem;
+            width: 100%;
+        }
+
+        @media (max-width: 520px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Floating Hearts Animation */
+        .support-card {
+            padding: 1.6rem 1.4rem;
+            cursor: pointer;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-mist), var(--mauve));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .support-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.98rem;
+            color: var(--text-dark);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* card expand icon */
+        .card-arrow {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--dusty-rose);
+            margin-left: 0.4rem;
+            transition: transform 0.4s ease;
+        }
+
+        .support-card.open .card-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* ── MESSAGE REVEAL ───────────────────────────────── */
+        .message-reveal {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.6s ease,
+                margin-top 0.4s ease;
+            font-size: 0.87rem;
+            font-weight: 300;
+            color: var(--text-mid);
+            line-height: 1.65;
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        .message-reveal.active {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 0.85rem;
+        }
+
+        /* ── HEART CTA CARD ───────────────────────────────── */
+        .cta-wrapper {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(22px) saturate(160%);
+            -webkit-backdrop-filter: blur(22px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            padding: 3.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.4rem;
+            width: 100%;
+            max-width: 480px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* ── FLOATING HEARTS ──────────────────────────────── */
         .floating-heart {
             position: fixed;
-            font-size: 2rem;
+            font-size: 1.6rem;
             pointer-events: none;
-            z-index: 1000;
-            animation: float-heart 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            z-index: 9999;
+            animation: float-heart 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         @keyframes float-heart {
@@ -205,160 +493,384 @@
             }
 
             100% {
-                transform: translateY(-200px) scale(1.5) rotate(45deg);
+                transform: translateY(-190px) scale(1.4) rotate(30deg);
                 opacity: 0;
+            }
+        }
+
+        /* ── CAPYBARA ─────────────────────────────────────── */
+        .capybara {
+            position: fixed;
+            bottom: 32px;
+            width: 130px;
+            z-index: 20;
+            pointer-events: none;
+            filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.07));
+        }
+
+        .capy-left {
+            left: 28px;
+            animation: capy-bob-l 7s infinite ease-in-out;
+        }
+
+        .capy-right {
+            right: 28px;
+            animation: capy-bob-r 7s infinite ease-in-out;
+            animation-delay: -3s;
+        }
+
+        @keyframes capy-bob-l {
+
+            0%,
+            100% {
+                transform: translateY(0) scaleX(-1);
+            }
+
+            50% {
+                transform: translateY(-16px) scaleX(-1);
+            }
+        }
+
+        @keyframes capy-bob-r {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .capybara {
+                width: 88px;
+                bottom: 12px;
+            }
+
+            .capy-left {
+                left: 8px;
+            }
+
+            .capy-right {
+                right: 8px;
+            }
+        }
+
+        /* ── PAGE 1 EXTRAS ────────────────────────────────── */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mauve);
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(220, 160, 195, 0.4);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(240, 180, 210, 0.30), transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: glow-pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.12);
+            }
+        }
+
+        /* ── PROGRESS DOTS ────────────────────────────────── */
+        .progress-dots {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(200, 130, 165, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .dot.active {
+            background: var(--mauve);
+            width: 22px;
+            border-radius: 4px;
+        }
+
+        /* ── SPARKLE TRAIL ────────────────────────────────── */
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            z-index: 10000;
+            opacity: 0;
+            animation: sparkle-fade 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkle-fade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0);
             }
         }
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col items-center py-12 px-6 overflow-x-hidden selection:bg-rose-100">
-
-    <!-- background decorative elements -->
+<body>
+    <!-- Ambient blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
 
-    <!-- Cute Capybara GIFs -->
-    <img src="https://media.tenor.com/bE_sLdM7hX4AAAAi/capybara.gif" alt="Capybara eating" class="capybara capy-left">
-    <img src="https://media.tenor.com/mO2j31-Nsq0AAAAi/capybara-bath.gif" alt="Capybara in bath"
+    <!-- Sakura petals (injected by JS) -->
+
+    <!-- Capybaras -->
+    <img src="https://media.tenor.com/bE_sLdM7hX4AAAAi/capybara.gif" alt="Capybara" class="capybara capy-left">
+    <img src="https://media.tenor.com/mO2j31-Nsq0AAAAi/capybara-bath.gif" alt="Capybara bath"
         class="capybara capy-right">
 
-    <div class="max-w-2xl w-full flex flex-col items-center relative z-20 min-h-[85vh] justify-center">
-        <!-- PAGE 1 -->
-        <div id="page-1" class="page-section active flex-col items-center text-center fade-in">
-            <h1 class="text-3xl sm:text-4xl font-medium text-rose-800 mb-6 leading-tight">Alam kong importante yang
-                ginagawa mo.</h1>
-            <p class="mb-10 text-rose-600/90 font-light text-lg">Pahinga ka muna saglit. No need mag-reply ha? Gawa lang
-                ako ng space para sa'yo.</p>
+    <div class="container">
 
-            <button onclick="goToPage(2)"
-                class="group px-10 py-4 bg-white/60 hover:bg-white/80 border border-white/60 text-rose-800 rounded-full font-medium transition-all shadow-lg active:scale-95 flex items-center gap-3">
-                Next <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
-            </button>
+        <!-- Progress dots -->
+        <div class="progress-dots" id="progress-dots">
+            <div class="dot active" id="dot-1"></div>
+            <div class="dot" id="dot-2"></div>
+            <div class="dot" id="dot-3"></div>
         </div>
 
-        <!-- PAGE 2 -->
-        <div id="page-2" class="page-section flex-col items-center w-full">
-            <h2 class="text-2xl font-medium text-rose-800 mb-8">Simple Reminders</h2>
-            <div id="support-cards" class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"></div>
+        <!-- ── PAGE 1 ──────────────────────────────────────── -->
+        <div id="page-1" class="page-section active fade-in-init" style="position:relative;">
+            <div class="hero-glow"></div>
 
-            <div class="mt-10 flex gap-6">
-                <button onclick="goToPage(1)"
-                    class="px-8 py-3 bg-white/30 hover:bg-white/50 border border-white/40 text-rose-800 rounded-full font-medium transition-all active:scale-95">←
-                    Back</button>
-                <button onclick="goToPage(3)"
-                    class="px-8 py-3 bg-white/60 hover:bg-white/80 border border-white/60 text-rose-800 rounded-full font-medium transition-all shadow-lg active:scale-95 flex items-center gap-2">Next
-                    →</button>
+            <div class="hero-badge">🌸 for you, today</div>
+
+            <h1 class="page-title">
+                Alam kong importante<br>
+                <em>yang ginagawa mo.</em>
+            </h1>
+
+            <div class="divider"><span>❀</span></div>
+
+            <p class="page-subtitle">
+                Pahinga ka muna saglit.<br>
+                No need mag-reply ha?<br>
+                Gawa lang ako ng space para sa'yo. 🤍
+            </p>
+
+            <div style="margin-top:2.8rem;">
+                <button class="btn btn-primary" onclick="goToPage(2)" id="btn-next-1">
+                    Sige, patingin ka <span style="font-size:1.1em;">→</span>
+                </button>
             </div>
         </div>
 
-        <!-- PAGE 3 -->
-        <div id="page-3" class="page-section flex-col items-center text-center">
-            <div
-                class="glass-card p-12 rounded-[2.5rem] flex flex-col items-center justify-center min-h-[300px] w-full max-w-lg mb-8">
-                <button onclick="popHearts(event)"
-                    class="group px-10 py-6 bg-rose-400 hover:bg-rose-500 text-white rounded-full font-medium transition-all shadow-xl hover:shadow-2xl active:scale-95 flex items-center justify-center gap-3 relative z-10 text-lg w-full">
+        <!-- ── PAGE 2 ──────────────────────────────────────── -->
+        <div id="page-2" class="page-section" style="text-align:left;">
+            <div style="text-align:center; width:100%;">
+                <h2 class="section-title">Simple Reminders 🌷</h2>
+                <p class="section-hint">Tap a card — may surprise. ✨</p>
+            </div>
+
+            <div class="cards-grid" id="support-cards"></div>
+
+            <div class="btn-nav-group">
+                <button class="btn btn-ghost" onclick="goToPage(1)" id="btn-back-2">← Back</button>
+                <button class="btn btn-primary" onclick="goToPage(3)" id="btn-next-2">Next →</button>
+            </div>
+        </div>
+
+        <!-- ── PAGE 3 ──────────────────────────────────────── -->
+        <div id="page-3" class="page-section">
+            <h2 class="section-title" style="margin-bottom:0.4rem;">Kaya mo 'to. 💗</h2>
+            <p class="section-hint">Para sa'yo lang ito.</p>
+
+            <div class="cta-wrapper">
+                <button class="btn btn-cta" onclick="popHearts(event)" id="btn-hearts">
                     💖 Goodluck po, kaya po natin 'to! 💖
                 </button>
-                <p class="text-rose-700/60 font-light text-sm mt-6 italic">Click the button above!</p>
+                <p class="cta-desc">I-click mo lang 'yan, para sa'yo 'yan 🌸</p>
             </div>
 
-            <button onclick="goToPage(2)"
-                class="px-8 py-3 bg-white/30 hover:bg-white/50 border border-white/40 text-rose-800 rounded-full font-medium transition-all active:scale-95">←
-                Back to Cards</button>
+            <button class="btn btn-ghost" onclick="goToPage(2)" id="btn-back-3">← Back to Cards</button>
         </div>
+
     </div>
 
     <script>
+        /* ── Sakura petals ───────────────────────────────── */
+        const petalEmojis = ['🌸', '🌷', '✿', '❀', '🌺'];
+        for (let i = 0; i < 14; i++) {
+            const p = document.createElement('div');
+            p.className = 'petal-fall';
+            p.innerHTML = petalEmojis[i % petalEmojis.length];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = (0.7 + Math.random() * 0.7) + 'rem';
+            p.style.opacity = '0';
+            const dur = 10 + Math.random() * 14;
+            p.style.animationDuration = dur + 's';
+            p.style.animationDelay = -(Math.random() * dur) + 's';
+            document.body.appendChild(p);
+        }
+
+        /* ── Card data ───────────────────────────────────── */
         const cardsData = [
             {
                 title: "Hingang malalim. Okay lang ang lahat.",
-                response: "Relax ka lang po. Huwag madaliin ang lahat. Andito lang ako sa tabi mo. Kalma ka lang."
+                response: "Relax ka lang po. Huwag madaliin ang lahat. Andito lang ako sa tabi mo. Kalma ka lang.",
+                emoji: "🌬️"
             },
             {
                 title: "Pahinga muna. It is part of progress.",
-                response: "Kailangan mo rin ng break. Hindi race ang buhay. Okay lang mag-pause today. Rest well."
+                response: "Kailangan mo rin ng break. Hindi race ang buhay. Okay lang mag-pause today. Rest well.",
+                emoji: "☁️"
             },
             {
                 title: "Okay lang mapagod. Tao ka lang.",
-                response: "Minsan, the bravest thing you can do is to pause, not to quit, but to take care of yourself. Rest ka muna"
+                response: "The bravest thing you can do is pause — not quit, but take care of yourself. Rest ka muna.",
+                emoji: "🌿"
             },
             {
                 title: "One step at a time lang, okay?",
-                response: "Dahan-dahan lang muna. Isang bagay lang muna ayusin. Magagawa mo din 'yan."
+                response: "Dahan-dahan lang muna. Isang bagay lang muna ayusin. Magagawa mo din 'yan.",
+                emoji: "🐾"
             },
             {
                 title: "Proud ako sa'yo.",
-                response: "Kahit maliit, progress pa rin 'yun. Wag ikumpara ang sarili sa iba. Proud ako sa pacing mo."
+                response: "Kahit maliit, progress pa rin 'yun. Wag ikumpara ang sarili sa iba. Proud ako sa pacing mo.",
+                emoji: "🌸"
             },
             {
-                title: "Enough ka na.",
-                response: "No need to be productive today. Huminga ka lang. Sapat ka na kahit wala kang gawin."
+                title: "Magrest ka na.",
+                response: "No need to be productive today. Huminga ka lang. Sapat ka na kahit wala kang gawin.",
+                emoji: "💗"
             }
         ];
 
+        /* ── Render cards ────────────────────────────────── */
         const container = document.getElementById('support-cards');
+        let activeCard = -1;
 
         cardsData.forEach((card, index) => {
             const el = document.createElement('div');
-            el.className = "glass-card p-8 rounded-3xl cursor-pointer text-center flex flex-col items-center justify-center";
-            el.onclick = () => toggleMessage(index);
-
+            el.className = 'glass support-card';
+            el.id = `card-${index}`;
+            el.onclick = () => toggleMessage(index, el);
             el.innerHTML = `
-                <h3 class="text-rose-800 font-medium">${card.title}</h3>
-                <p id="msg-${index}" class="message-reveal text-sm italic font-light">${card.response}</p>
+                <p style="font-size:1.5rem; margin-bottom:0.5rem;">${card.emoji}</p>
+                <h3 class="card-title">${card.title} <span class="card-arrow">▾</span></h3>
+                <p id="msg-${index}" class="message-reveal">${card.response}</p>
             `;
-
             container.appendChild(el);
         });
 
-        let activeCard = -1;
-
-        function toggleMessage(index) {
+        function toggleMessage(index, el) {
             const msg = document.getElementById(`msg-${index}`);
-
             if (activeCard !== -1 && activeCard !== index) {
                 document.getElementById(`msg-${activeCard}`).classList.remove('active');
+                document.getElementById(`card-${activeCard}`).classList.remove('open');
             }
-
             msg.classList.toggle('active');
+            el.classList.toggle('open');
             activeCard = index;
         }
 
+        /* ── Page navigation ─────────────────────────────── */
         function goToPage(num) {
             const allPages = document.querySelectorAll('.page-section');
             allPages.forEach(p => {
                 p.style.opacity = '0';
-                p.classList.remove('active');
+                p.style.transform = 'translateY(16px)';
+                setTimeout(() => p.classList.remove('active'), 250);
             });
+
+            // Update progress dots
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                dot.classList.toggle('active', i === num);
+            }
 
             setTimeout(() => {
                 const target = document.getElementById(`page-${num}`);
                 target.classList.add('active');
-                void target.offsetWidth;
-                target.style.opacity = '1';
-            }, 300);
+                requestAnimationFrame(() => {
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
+                });
+            }, 280);
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        /* ── Floating hearts ─────────────────────────────── */
         function popHearts(e) {
-            for (let i = 0; i < 25; i++) {
+            const heartTypes = ['💖', '💕', '💗', '💓', '🌸', '✨', '🩷'];
+            for (let i = 0; i < 30; i++) {
                 const heart = document.createElement('div');
-                const heartTypes = ['💖', '❤️', '💕', '💗', '💓'];
                 heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
                 heart.className = 'floating-heart';
 
-                heart.style.left = e.clientX + (Math.random() * 160 - 80) + 'px';
-                heart.style.top = (e.clientY + window.scrollY - 30) + 'px';
+                const spread = 130;
+                heart.style.left = (e.clientX + (Math.random() * spread * 2 - spread)) + 'px';
+                heart.style.top = (e.clientY + window.scrollY - 20) + 'px';
+                heart.style.fontSize = (1.1 + Math.random() * 1.2) + 'rem';
 
-                const duration = 1.2 + Math.random() * 1.5;
-                heart.style.animationDuration = duration + 's';
+                const dur = 1.4 + Math.random() * 1.4;
+                heart.style.animationDuration = dur + 's';
+                heart.style.animationDelay = (Math.random() * 0.3) + 's';
 
                 document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), duration * 1000);
+                setTimeout(() => heart.remove(), (dur + 0.4) * 1000);
             }
         }
+
+        /* ── Sparkle Trail Script ────────────────────────── */
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.15) { // Only create sparse sparkles
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                const size = 2 + Math.random() * 4;
+                sparkle.style.width = size + 'px';
+                sparkle.style.height = size + 'px';
+                sparkle.style.left = e.pageX + (Math.random() * 20 - 10) + 'px';
+                sparkle.style.top = e.pageY + (Math.random() * 20 - 10) + 'px';
+
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
+            }
+        });
     </script>
 </body>
 
